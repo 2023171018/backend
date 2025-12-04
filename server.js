@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const telemetryRoutes = require('./routes/telemetryRoutes');
+const updateRoutes = require('./routes/updateRoutes'); // <-- AGREGADO
 
 dotenv.config();
 connectDB();
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/telemetry', telemetryRoutes);
+app.use('/api/update', updateRoutes); // <-- AGREGADO
 
 app.get('/', (req, res) => {
     res.send('API ESP32 Telemetry Running');
